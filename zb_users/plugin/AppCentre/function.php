@@ -11,7 +11,7 @@ function AppCentre_SubMenus($id) {
 	echo '<a href="main.php?method=check"><span class="m-left ' . ($id == 2 ? 'm-now' : '') . '">检查应用更新</span></a>';
 	echo '<a href="update.php"><span class="m-left ' . ($id == 3 ? 'm-now' : '') . '">系统更新与校验</span></a>';
 
-	if ($zbp->Config('AppCentre')->username && $zbp->Config('AppCentre')->password) {
+	if ($zbp->Config('AppCentre')->token) {
 		echo '<a href="client.php"><span class="m-left ' . ($id == 9 ? 'm-now' : '') . '">我的应用仓库</span></a>';
 	} else {
 		echo '<a href="client.php"><span class="m-left ' . ($id == 9 ? 'm-now' : '') . '">登录应用商城</span></a>';
@@ -118,16 +118,8 @@ function Server_Open($method) {
 	case 'view':
 		$s = Server_SendRequest(APPCENTRE_URL . '?' . GetVars('QUERY_STRING', 'SERVER'));
 		if (strpos($s, '<!--developer-nologin-->') !== false) {
-			if ($zbp->Config('AppCentre')->username || $zbp->Config('AppCentre')->password) {
-				$zbp->Config('AppCentre')->username = '';
-				$zbp->Config('AppCentre')->password = '';
-				$zbp->SaveConfig('AppCentre');
-			}
-		}
-		if (strpos($s, '<!--shop-nologin-->') !== false) {
-			if ($zbp->Config('AppCentre')->shop_username || $zbp->Config('AppCentre')->shop_password) {
-				$zbp->Config('AppCentre')->shop_username = '';
-				$zbp->Config('AppCentre')->shop_password = '';
+			if ($zbp->Config('AppCentre')->token) {
+				$zbp->Config('AppCentre')->token = '';
 				$zbp->SaveConfig('AppCentre');
 			}
 		}
@@ -159,11 +151,15 @@ function Server_Open($method) {
 		}
 		die();
 		break;
-	case 'vaild':
+	case 'login':
 		$data = array();
-		$data["username"] = GetVars("app_username");
-		$data["password"] = md5(GetVars("app_password"));
-		$s = Server_SendRequest(APPCENTRE_URL . '?vaild', $data);
+		$data["token"] = GetVars("app_token");
+		$data["sign"] = AppCentre_Get_Sign(GetVars("app_token"));
+		$s = Server_SendRequest(APPCENTRE_URL . '?login', $data);
+		return $s;
+		break;
+	case 'logout':
+		$s = Server_SendRequest(APPCENTRE_URL . '?logout');
 		return $s;
 		break;
 	case 'submitpre':
@@ -422,6 +418,10 @@ function AppCentre_PHPVersion($default) {
 		'5.6'=>'5.6',
 		'7.0'=>'7.0',
 		'7.1'=>'7.1',
+		'7.2'=>'7.2',
+		'7.3'=>'7.3',
+		'7.4'=>'7.4',
+		'8.0'=>'8.0'
 		);
 	$i = 0;
 	foreach ($array as $key => $value) {

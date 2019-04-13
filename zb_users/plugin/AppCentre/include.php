@@ -5,20 +5,14 @@ RegisterPlugin("AppCentre", "ActivePlugin_AppCentre");
 if(stripos($GLOBALS['bloghost'],'https://')!==false){
 	define('APPCENTRE_URL', 'https://app.zblogcn.com/client/');
 	define('APPCENTRE_SYSTEM_UPDATE', 'https://update.zblogcn.com/zblogphp/');
-	define('APPCENTRE_API_URL', 'https://app.zblogcn.com/api/index.php?api=');	
 	define('APPCENTRE_VERIFY', 'https://verify.app.zblogcn.com/release/v1/');
 	define('APPCENTRE_VERIFY_V2', 'https://verify.app.zblogcn.com/release/v2/');
 }else{
 	define('APPCENTRE_URL', 'http://app.zblogcn.com/client/');
 	define('APPCENTRE_SYSTEM_UPDATE', 'http://update.zblogcn.com/zblogphp/');
-	define('APPCENTRE_API_URL', 'http://app.zblogcn.com/api/index.php?api=');
 	define('APPCENTRE_VERIFY', 'http://verify.app.zblogcn.com/release/v1/');
     define('APPCENTRE_VERIFY_V2', 'http://verify.app.zblogcn.com/release/v2/');
 }
-define('APPCENTRE_API_APP_ISBUY', 'isbuy');
-define('APPCENTRE_API_USER_INFO', 'userinfo');
-define('APPCENTRE_API_ORDER_LIST', 'orderlist');
-define('APPCENTRE_API_ORDER_DETAIL', 'orderdetail');
 
 define('APPCENTRE_PUBLIC_KEY','-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3HYTjyOIzYnJtIl4M50l
@@ -101,7 +95,7 @@ function AppCentre_AddSiteInfoMenu() {
 }
 
 
-function AppCentre_Cmd_Begin () 
+function AppCentre_Cmd_Begin ()
 {
 	global $zbp;
 	$action = GetVars('act', 'GET');
@@ -131,55 +125,75 @@ function AppCentre_AddThemeMenu() {
 	global $zbp;
     if (AppCentre_InSecurityMode()) return;
 	echo "<script type='text/javascript'>var app_enabledevelop=" . (int) $zbp->Config('AppCentre')->enabledevelop . ";</script>";
-	echo "<script type='text/javascript'>var app_username='" . $zbp->Config('AppCentre')->username . "';</script>";
-	echo "<script src='{$zbp->host}zb_users/plugin/AppCentre/theme.js.php?token={$zbp->GetToken('AppCentre_JS')}' type='text/javascript'></script>";
+	echo "<script src='{$zbp->host}zb_users/plugin/AppCentre/theme.js.php?token={$zbp->GetToken('AppCentre_JS')}'></script>";
 }
 
 function AppCentre_AddPluginMenu() {
 	global $zbp;
     if (AppCentre_InSecurityMode()) return;
 	echo "<script type='text/javascript'>var app_enabledevelop=" . (int) $zbp->Config('AppCentre')->enabledevelop . ";</script>";
-	echo "<script type='text/javascript'>var app_username='" . $zbp->Config('AppCentre')->username . "';</script>";
-	echo "<script src='{$zbp->host}zb_users/plugin/AppCentre/plugin.js.php?token={$zbp->GetToken('AppCentre_JS')}' type='text/javascript'></script>";
+	echo "<script src='{$zbp->host}zb_users/plugin/AppCentre/plugin.js.php?token={$zbp->GetToken('AppCentre_JS')}'></script>";
 }
 
-//$appid是App在应用中心的发布后的文章ID数字号，非App的ID名称。
+/**
+ * @deprecated
+ */
 function AppCentre_App_Check_ISBUY($appid) {
-	global $zbp;
-	$postdate = array(
-		'email' => $zbp->Config('AppCentre')->shop_username,
-		'password' => $zbp->Config('AppCentre')->shop_password,
-		'appid' => $appid,
-		    );
-	$http_post = Network::Create();
-	$http_post->open('POST', APPCENTRE_API_URL . APPCENTRE_API_APP_ISBUY);
-	$http_post->setRequestHeader('Referer', substr($zbp->host, 0, -1) . $zbp->currenturl);
-
-	$http_post->send($postdate);
-	$result = json_decode($http_post->responseText, true);
-	return $result;
+	return json_decode('{"data": {"isbuy": true}}', true);
 }
 
+/**
+ * 不纯，含旧版本升级代码。
+ * 对于新版(>20190201)，可假定其是pure的。
+ */
 function AppCentre_Get_Cookies(){
 	global $zbp;
-	$c = '';
-	$un = substr($zbp->Config('AppCentre')->username,0,100);
-	$ps = substr($zbp->Config('AppCentre')->password,0,100);
-	$c .= ' apptype=' . urlencode($zbp->Config('AppCentre')->apptype) . '; ';
-	$c .= ' app_guestver=' . urlencode('2.0') . '; ';
-	$c .= ' app_host=' . urlencode($zbp->host) . '; ';
-	$c .= ' app_email=' . urlencode($zbp->user->Email) . '; ';
-	$c .= ' app_user=' . urlencode($zbp->user->Name) . '; ';
-	if ($un && $ps) {
-		$c .= "username=" . urlencode($un) . "; password=" . urlencode($ps);
+
+	if ($zbp->Config('AppCentre')->username !== '') {
+		$zbp->Config('AppCentre')->token = $zbp->Config('AppCentre')->username;
+		$zbp->Config('AppCentre')->uniq_id = $zbp->Config('AppCentre')->password;
+		$zbp->Config('AppCentre')->old_token = 'true';
+		$zbp->Config('AppCentre')->username = '';
+		$zbp->Config('AppCentre')->password = '';
+		unset($zbp->Config('AppCentre')->username);
+		unset($zbp->Config('AppCentre')->password);
+		$zbp->SaveConfig('AppCentre');
 	}
 
-	$shopun = substr($zbp->Config('AppCentre')->shop_username,0,100);
-	$shopps = substr($zbp->Config('AppCentre')->shop_password,0,100);
-	if ($shopun && $shopps) {
-		$c .= "; shop_username=" . urlencode($shopun) . "; shop_password=" . urlencode($shopps);
+	$c = '';
+
+	$c .= ' apptype=' . urlencode($zbp->Config('AppCentre')->apptype);
+	$c .= ' ;app_guestver=' . urlencode('2.0');
+	$c .= ' ;app_host=' . urlencode($zbp->host);
+	$c .= ' ;app_email=' . urlencode($zbp->user->Email);
+	$c .= ' ;app_user=' . urlencode($zbp->user->Name);
+
+	$token = substr($zbp->Config('AppCentre')->token, 0, 100);
+	$uniq_id = substr($zbp->Config('AppCentre')->uniq_id, 0, 100);
+	if ($token) {
+		$c .= "; token=" . urlencode($token);
+		if ($zbp->Config('AppCentre')->old_token === 'true') {
+			$c .= "; sign=" . urlencode($uniq_id);
+		} else {
+			$c .= "; sign=" . urlencode(AppCentre_Get_Sign($token));
+		}
+		$c .= "; uniq_id=" . urlencode($uniq_id);
 	}
+
 	return $c;
+}
+
+function AppCentre_Get_Sign ($token) {
+	global $zbp;
+	//$zbp->user->Level != 1
+	if($zbp->user->Level != 1){
+		foreach ($zbp->members as $key => $m) {
+			if($m->Level == 1){
+				return hash_hmac('sha256', $m->Name . '|' . $m->Password . '|' . $m->Guid, $token);
+			}
+		}
+	}
+	return hash_hmac('sha256', $zbp->user->Name . '|' . $zbp->user->Password . '|' . $zbp->user->Guid, $token);
 }
 
 function AppCentre_Get_UserAgent(){
@@ -195,6 +209,9 @@ function AppCentre_Get_UserAgent(){
 	return $u;
 }
 
+/**
+ * @deprecated
+ */
 function AppCentre_Check_App_IsBuy($appid,$throwerror=true){
 	global $zbp;
 	$ajax = Network::Create();
@@ -205,8 +222,7 @@ function AppCentre_Check_App_IsBuy($appid,$throwerror=true){
 	$u = AppCentre_Get_UserAgent();
 
 	$appid = $appid;
-	$username = $zbp->Config('AppCentre')->username;
-	$password = $zbp->Config('AppCentre')->password;
+	$token = $zbp->Config('AppCentre')->token;
 	$host = $zbp->host;
 
 	$data = array();
@@ -220,8 +236,8 @@ function AppCentre_Check_App_IsBuy($appid,$throwerror=true){
 	$pu_key = openssl_pkey_get_public(APPCENTRE_PUBLIC_KEY);
 
 	$encrypted = '';
-	openssl_public_encrypt(implode('|',$data),$encrypted,$pu_key);//公钥加密  
-	$encrypted = base64_encode($encrypted);  
+	openssl_public_encrypt(implode('|',$data),$encrypted,$pu_key);//公钥加密
+	$encrypted = base64_encode($encrypted);
 	$data = array();
 	$data['info'] = $encrypted;
 
@@ -238,7 +254,7 @@ function AppCentre_Check_App_IsBuy($appid,$throwerror=true){
 	$encrypted = str_replace('"', '', $encrypted);
 	openssl_public_decrypt(base64_decode($encrypted),$decrypted,$pu_key);//公钥解密
 	//die($decrypted);
-	if(md5($zbp->Config('AppCentre')->username . 'ok') == $decrypted){
+	if(md5($zbp->Config('AppCentre')->token . 'ok') == $decrypted){
 		return true;
 	}else{
 		if($throwerror == true){
@@ -324,9 +340,9 @@ function AppCentre_VerifyV2($appid, $type = 'plugin') {
               $decryptedText = openssl_decrypt($encryptedData, 'aes-256-cbc', $aesKey, OPENSSL_RAW_DATA, $aesIv);
           } else {
               $decryptedText = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $aesKey, $encryptedData, MCRYPT_MODE_CBC, $aesIv);
-              $textLength = strlen($decryptedText); 
+              $textLength = strlen($decryptedText);
               $padding = ord($decryptedText[$textLength - 1]);
-              $decryptedText = substr($decryptedText, 0, -$padding); 
+              $decryptedText = substr($decryptedText, 0, -$padding);
           }
         } else {
             $decryptedText = $returnData;
@@ -359,13 +375,13 @@ function AppCentre_UpdateCSP(&$csp)
 }
 
 
-function AppCentre_InSecurityMode () 
+function AppCentre_InSecurityMode ()
 {
     global $zbp;
     return file_exists($zbp->path . 'zb_users/data/appcentre_security_mode.php');
 }
 
-function AppCentre_CheckInSecurityMode () 
+function AppCentre_CheckInSecurityMode ()
 {
 	global $zbp;
     if (AppCentre_InSecurityMode()) {

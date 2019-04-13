@@ -8,7 +8,7 @@ $action = 'root';
 if (!$zbp->CheckRights($action)) {$zbp->ShowError(6);die();}
 if (!$zbp->CheckPlugin('AppCentre')) {$zbp->ShowError(48);die();}
 
-if (!$zbp->Config('AppCentre')->username || !$zbp->Config('AppCentre')->password) {
+if (!$zbp->Config('AppCentre')->token) {
 	$blogtitle = '应用中心(客户端)-登录应用商城';
 } else {
 	$blogtitle = '应用中心(客户端)-我的应用仓库';
@@ -19,18 +19,21 @@ Add_Filter_Plugin('Filter_Plugin_CSP_Backend', 'AppCentre_UpdateCSP');
 if (GetVars('act') == 'login') {
   if (!$zbp->ValidToken(GetVars('token', 'GET'),'AppCentre')) {$zbp->ShowError(5, __FILE__, __LINE__);die();}
   AppCentre_CheckInSecurityMode();
-	$s = Server_Open('vaild');
-	if ($s) {
+	$s = trim(Server_Open('login'));
+	if ($s !== '') {
 
-		$zbp->Config('AppCentre')->username = GetVars("app_username");
-		$zbp->Config('AppCentre')->password = $s;
+    $zbp->Config('AppCentre')->token = GetVars("app_token");
+    $zbp->Config('AppCentre')->uniq_id = trim($s);
+    $zbp->Config('AppCentre')->old_token = 'false';
+    unset($zbp->Config('AppCentre')->old_token);
+
 		$zbp->SaveConfig('AppCentre');
 
 		$zbp->SetHint('good', '您已成功登录APP应用中心.');
 		Redirect('./main.php');
 		die;
 	} else {
-		$zbp->SetHint('bad', '用户名或密码错误.');
+		$zbp->SetHint('bad', '您输入的令牌不存在或已被绑定，请申请一个新的令牌。');
 		Redirect('./client.php');
 		die;
 	}
@@ -41,8 +44,8 @@ if (GetVars('act') == 'logout') {
     CheckHTTPRefererValid();
   }
   AppCentre_CheckInSecurityMode();
-	$zbp->Config('AppCentre')->username = '';
-	$zbp->Config('AppCentre')->password = '';
+  $zbp->Config('AppCentre')->token = '';
+  $zbp->Config('AppCentre')->uniq_id = '';
 	$zbp->SaveConfig('AppCentre');
 	$zbp->SetHint('good', '您已退出APP应用中心.');
 	Redirect('./client.php');
@@ -57,7 +60,7 @@ require $blogpath . 'zb_system/admin/admin_top.php';
   <div class="divHeader"><?php echo $blogtitle;?></div>
 <div class="SubMenu"><?php AppCentre_SubMenus(9);?></div>
   <div id="divMain2">
-<?php if (!$zbp->Config('AppCentre')->username) {?>
+<?php if (!$zbp->Config('AppCentre')->token) {?>
             <div class="divHeader2">应用中心账户登录</div>
             <form action="?act=login&token=<?php echo $zbp->GetToken('AppCentre')?>" method="post">
               <table style="line-height:3em;" width="100%" border="0">
@@ -67,11 +70,7 @@ require $blogpath . 'zb_system/admin/admin_top.php';
                 </tr>
                 <tr height="32">
                   <td  align="center">令牌:
-                    <input type="password" name="app_username" value="" style="width:40%"/></td>
-                </tr>
-                <tr height="32" style="display: none;">
-                  <td  align="center">密&nbsp;&nbsp;&nbsp;&nbsp;码:
-                    <input type="password" name="app_password" value="" style="width:40%" /></td>
+                    <input type="password" name="app_token" value="" style="width:40%"/></td>
                 </tr>
                 <tr height="32" align="center">
                   <td align="center"><input type="submit" value="登录" class="button" /></td>

@@ -65,3 +65,16 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ----------------------------------------------------------------------------------------------------
+commit4:get struct of page in theme/template/index.php
+****************************************************************************************************
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+        modified:   zb_users/theme/WhitePage/template/index.php
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        docs/
+----------------------------------------------------------------------------------------------------

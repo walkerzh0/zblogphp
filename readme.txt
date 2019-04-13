@@ -35,3 +35,33 @@ GitHub: https://github.com/zblogcn/zblogphp
 对于非虚拟主机用户，推荐使用宝塔面板搭建PHP环境并部署Z-BlogPHP。2分钟装好面板，一键管理服务器。
 安装宝塔面板：https://www.bt.cn/download/linux.html?z-blog
 一键部署：https://www.bt.cn/bbs/thread-5443-1-1.html?z-blog
+
+
+----------------------------------------------------------------------------------------------------
+commit2:desciption:Install plugins/themes and test ok
+****************************************************************************************************
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   zb_users/plugin/AppCentre/client.php
+        modified:   zb_users/plugin/AppCentre/function.php
+        modified:   zb_users/plugin/AppCentre/include.php
+        modified:   zb_users/plugin/AppCentre/plugin.js.php
+        modified:   zb_users/plugin/AppCentre/plugin.xml
+        modified:   zb_users/plugin/AppCentre/security.php
+        modified:   zb_users/plugin/AppCentre/theme.js.php
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        zb_users/cache/compiled/simples/
+        zb_users/plugin/FY_Prettify/
+        zb_users/plugin/IMAGE/
+        zb_users/plugin/YtUser/
+        zb_users/plugin/apost_free/
+        zb_users/plugin/markdown/
+        zb_users/theme/simples/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+----------------------------------------------------------------------------------------------------

@@ -10,13 +10,13 @@
 	<div class="articleBody clearfix">
 		<div class="articleThumb">
 			{if $article->IMAGE_COUNT>0}
-				<a href="{$article.Url}"><img src="{$article.IMAGE[0]}" alt="{$article.Title}" class="wp-post-image" width="400" height="200"  /></a>
+				<a href="{$article.Url}"><img src="{$article.IMAGE[0]}" alt="{$article.Title}" class="wp-post-image" width="300" height="200"  /></a>
 			{else}
-				<a href="{$article.Url}"><img src="{$zbp->Config('simples')->thumbnail}" alt="{$article.Title}" class="wp-post-image" width="400" height="200"  /></a>
+				<a href="{$article.Url}"><img src="{$zbp->Config('simples')->thumbnail}" alt="{$article.Title}" class="wp-post-image" width="300" height="200"  /></a>
 			{/if}
 		</div>
 		<div class="articleFeed">
-			{php}$description = trim(SubStrUTF8(TransferHTML($article->Content,'[nohtml]'),128)).'...';{/php}
+			{php}$description = trim(SubStrUTF8(TransferHTML($article->Content,'[nohtml]'),128)).'>>>';{/php}
 			<p>{$description}</p>
 		</div>
 		<div class="articleTags">

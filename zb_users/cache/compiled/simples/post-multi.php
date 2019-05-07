@@ -7,13 +7,13 @@
 	<div class="articleBody clearfix">
 		<div class="articleThumb">
 			<?php if ($article->IMAGE_COUNT>0) { ?>
-				<a href="<?php  echo $article->Url;  ?>"><img src="<?php  echo $article->IMAGE[0];  ?>" alt="<?php  echo $article->Title;  ?>" class="wp-post-image" width="400" height="200"  /></a>
+				<a href="<?php  echo $article->Url;  ?>"><img src="<?php  echo $article->IMAGE[0];  ?>" alt="<?php  echo $article->Title;  ?>" class="wp-post-image" width="300" height="200"  /></a>
 			<?php }else{  ?>
-				<a href="<?php  echo $article->Url;  ?>"><img src="<?php  echo $zbp->Config('simples')->thumbnail;  ?>" alt="<?php  echo $article->Title;  ?>" class="wp-post-image" width="400" height="200"  /></a>
+				<a href="<?php  echo $article->Url;  ?>"><img src="<?php  echo $zbp->Config('simples')->thumbnail;  ?>" alt="<?php  echo $article->Title;  ?>" class="wp-post-image" width="300" height="200"  /></a>
 			<?php } ?>
 		</div>
 		<div class="articleFeed">
-			<?php $description = trim(SubStrUTF8(TransferHTML($article->Content,'[nohtml]'),128)).'...'; ?>
+			<?php $description = trim(SubStrUTF8(TransferHTML($article->Content,'[nohtml]'),128)).'>>>'; ?>
 			<p><?php  echo $description;  ?></p>
 		</div>
 		<div class="articleTags">

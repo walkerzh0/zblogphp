@@ -4,27 +4,7 @@
 </div>';die();?>
 {template:header}
 
-<div class="page_all">
-
-
-	<div class="top">
-		<div class="itwalk_logo">
-			<img class="itwalk_logo_img" src="{$host}zb_users/theme/simples1/style/images/kide.jpg" alt="itWalkers" />
-		</div>
-		
-		<div class="navbar">
-			<ul id="menu">
-				<li><a href="http://localhost/zblogphp/">首页</a></li>
-				<li><a href="http://localhost/zblogphp/?id=2">留言本</a></li>
-				<li><a href="http://localhost/zblogphp/?apost_free">投稿</a></li>
-				<li><a href="http://localhost/zblogphp/?Login">登录</a></li>
-				<li><a href="http://localhost/zblogphp/?Register">注册</a></li>
-				<li><a href="http://localhost/zblogphp/zb_system/admin/index.php?act=admin">后台</a></li>
-			</ul>
-		</div>	
-	</div>
-
-	<div class="middle">
+	<div class="IndexMiddle">
 	
 		<div class="article_list">
 		
@@ -48,49 +28,11 @@
 
 		</div>
 
-		
-		<div class="SdBar">
-			<!--
-			{template:sidebar}
-			-->
-			<div class="SdbarArticle">
-				<div class="ArticleModHead">
-					<div class="ModSglHead"><span class="ModSglHead">文章推荐</span></div>
-					<div class="ModSglHead"><span>热评文章</span></div>
-				</div>
-				<!--网站推荐-->
-				<!--热评文章-->
-			</div>
-			<div class="SdBarDy">
-				<div class="DyModHead">
-					<span class="ModSglHead">最新发表</span>
-					<span class="ModSglHead">最小评论</span>
-				</div>
-				<!--最新发表-->
-				<!--最新评论-->			
-			</div>
-			<div class="SdBarIntrod">
-				<div class="IntrodModHead">
-					<span>关于本站</span>
-				</div>			
-			</div>
-			<div class="SdbarTags">
-				<div class="TagsModHead">
-					<span>标签</span>
-				</div>			
-				<!--Linux-->
-				<!--内核-->
-				<!--软件技术-->
-			</div>
-		</div>
+		{template:itwlk_sidebar}
 	
 	</div>
 	
-	<div class="bottom">
-	
-	</div>
 
-</div>
 
 
 

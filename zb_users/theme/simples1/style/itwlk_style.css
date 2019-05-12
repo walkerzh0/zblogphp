@@ -1,14 +1,14 @@
 body{
 	margin: 0 auto;
-	border: 1px solid silver;
+	//border: 1px solid silver;
 	width: 1260px;
 	height:2290px;
 }
 
 .page_all{
 	width: 1200px;
-	height:2280px;
-	border: 1px solid silver;
+	//height:2280px;
+	//border: 1px solid silver;
 	margin-top: 3px;
 	margin-left:30px;
 }
@@ -67,9 +67,16 @@ body{
 	text-decoration: none;
 }
 
-.middle{
+.IndexMiddle{
 	width: 1192px;
 	height: 1950px;
+	//border: 1px solid red;
+	margin-top: 20px;
+	margin-left:3px;
+}
+
+.ArticleDetailMiddle{
+	width: 1192px;
 	//border: 1px solid red;
 	margin-top: 20px;
 	margin-left:3px;
@@ -221,40 +228,6 @@ body{
 	margin-top: 20px;
 }
 
-/*
-.recmendlist{
-	width: 630px;
-	height: 200px;
-	border: 1px solid silver;
-	margin-top: 3px;
-	margin-left:3px;
-}
-
-.recmendarticle{
-	width: 620px;
-	height: 90px;
-	border: 1px solid silver;
-	margin-top: 3px;
-	margin-left:3px;
-}
-
-.commonlist{
-	width: 630px;
-	height: 700px;
-	border: 1px solid silver;
-	margin-top: 3px;
-	margin-left:3px;
-}
-
-.commonarticle{
-	width: 620px;
-	height: 225px;
-	border: 1px solid silver;
-	margin-top: 3px;
-	margin-left:3px;
-}
-*/
-
 .SdBar{
 	width: 310px;
 	height: 1850px;
@@ -314,7 +287,6 @@ body{
 	border: 1px solid silver;
 }
 
-
 /*.SdBarModHead, .DyModHead, .IntrodModHead, */
 
 .RecommendArticleOver, .
@@ -329,7 +301,7 @@ body{
 }
 
 
-/**************************************************************
+
 .ArticleSingle {
 	width: 1100px;
 	height:2280px;
@@ -337,7 +309,93 @@ body{
 	margin-top: 3px;
 	margin-left:30px;
 }
-**************************************************************/
+
+.ArticleInfos{
+	width: 850px;
+	//height: 1640px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:3px;
+	float: left;
+}
+
+.ArticleTitle{
+	width: 830px;
+	//border: 1px solid blue;
+	margin-top: 3px;
+	margin-left:8px;
+	
+	font-size: 20px;
+	font-family: "Microsoft YaHei";
+	color: #555555;
+	font-weight:bold;
+}
+
+.ArticleConts{
+	width: 830px;
+	//border: 1px solid blue;
+	margin-top: 3px;
+	margin-left:8px;
+}
+
+
+
+.ArticleConts p{
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	color: #777777;
+	line-height: 25px;
+	margin-top: 2px;	
+}
+
+.ArticleComms{
+	width: 830px;
+	//border: 1px solid blue;
+	margin-top: 25px;
+	margin-left:8px;
+}
+
+.UserComms{
+	width: 800px;
+	//border: 1px solid blue;
+	margin-top: 10px;
+	margin-left:8px;
+}
+.ArticleRalation{
+	width: 830px;
+	//border: 1px solid blue;
+	margin-top: 3px;
+	margin-left:8px;
+}
+
+
+
+.ArticleRalation li{
+	list-style:none; /* 将默认的列表符号去掉 */
+}
+
+.ArticleRalation li a, .UserCommsSpan{
+	font-size: 15px;
+	font-family: "Microsoft YaHei";
+	color: #555555;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+#DivCommentPost{
+
+}
+
+
+#DivCommentPost li{
+	list-style:none; /* 将默认的列表符号去掉 */
+	margin-top: 5px;
+	
+}
+
+
+
+
 
 
 

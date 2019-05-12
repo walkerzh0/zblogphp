@@ -288,6 +288,7 @@ require ZBP_PATH . 'zb_system/admin/admin_top.php';
                                     <select style="width:180px;" size="1" name="AuthorID" id="cmbUser"
                                             onChange="cmbUser.value=this.options[this.selectedIndex].value">
                                         <?php echo OutputOptionItemsOfMember($article->AuthorID); ?>
+										<option value="walker">walker</option>
                                     </select>
                                 </div>
                                 <!-- )user -->

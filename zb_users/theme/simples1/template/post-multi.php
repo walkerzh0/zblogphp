@@ -38,6 +38,7 @@ function mOut(obj)
 
 				<div id="ArticleFooterLi"><i class="fa fa-calendar" margin-left="0px" ></i>{$article.Time('Y-m-d')}</div>
 				<li><i class="fa fa-eye"></i>{$article.ViewNums}次浏览</li>
+				<li><i class="fa fa-eye"></i>{$article.Author.Name}</li>
 				<li><i class="fa fa-folder-o"></i><a href="{$article.Category.Url}" rel="category tag">{$article.Category.Name}</a></li>
 				<div><a href="{$article.Url}" class="LookMore" onmouseover="mOver(this)" onmouseout="mOut(this)">阅读全文</a></div>
 

@@ -1,0 +1,343 @@
+body{
+	margin: 0 auto;
+	border: 1px solid silver;
+	width: 1260px;
+	height:2290px;
+}
+
+.page_all{
+	width: 1200px;
+	height:2280px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:30px;
+}
+
+.top{
+	width: 1192px;
+	height: 110px;
+	//border: 1px solid red;
+	margin-top: 3px;
+	margin-left:3px;
+}
+
+.itwalk_logo{
+	width: 130px;
+	height: 100px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:3px;
+	float: left;
+}
+
+.itwalk_logo_img {
+	width: 125px;
+	height: 95px;
+}
+
+.navbar{
+	width: 1050px;
+	height: 100px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:3px;
+	float: left;
+	background: #777777;
+}
+
+
+#menu { 
+    font:12px verdana, arial, sans-serif; /* 设置文字大小和字体样式 */
+    width: 100%;
+	margin-left: 5px;
+}
+#menu, #menu li {
+    list-style:none; /* 将默认的列表符号去掉 */
+    padding:0; /* 将默认的内边距去掉 */
+    margin-top:38px; /* 将默认的外边距去掉 */
+	margin-left:20px;
+    float: left; /* 往左浮动 */
+    display: block;
+	font-size: 15px;
+
+}
+
+#menu, #menu li a{ 
+	color: white;
+	text-decoration: none;
+}
+
+.middle{
+	width: 1192px;
+	height: 1950px;
+	//border: 1px solid red;
+	margin-top: 20px;
+	margin-left:3px;
+}
+
+
+.article_list{
+
+	width: 850px;
+	height: 1640px;
+	//border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:3px;
+	float: left;
+
+}
+
+.ad_top {
+	width: 830px;
+	height: 280px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:8px;
+}
+
+.common_article, .top_article, .Article{
+	width: 830px;
+	height: 180px;
+	border: 1px solid silver;
+	margin-top: 15px;
+	margin-left:8px;
+}
+
+.StateDiv {
+	width: 830px;
+	height: 20px;
+	//border: 1px solid silver;
+	margin-top: 0px;
+}
+
+.ArticleCurStat {
+	float: right;
+	background: red;
+	color: white;
+}
+
+.ImgDiv {
+	width: 145px;
+	height: 140px;
+	float: left;
+	margin-left: 5px;
+	//border: 1px solid silver;
+}
+
+.ArticleDetailDiv {
+	width: 660px;
+	height: 150px;
+	float: right;
+	//border: 1px solid silver;
+}
+
+.ArticleHeader {
+	width: 660px;
+	height: 25px;
+	float: right;
+	//border: 1px solid silver;
+}
+
+.ArticleHeader span a{
+	font-size: 18px;
+	font-family: "Microsoft YaHei";
+	color: #555555;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+.ArticleContent{
+	width: 660px;
+	height: 80px;
+	float: right;
+	margin-top: 3px;
+	//border: 1px solid silver;
+}
+
+.ArticleContent p{
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	color: #777777;
+	line-height: 25px;
+	margin-top: 2px;
+}
+ 
+.ArticleFooter{
+	width: 660px;
+	height: 38px;
+	float: right;
+	margin-top: 3px;
+	margin-left: 10px;
+	//border: 1px solid silver;
+}
+
+.ArticleFooter li{
+    list-style:none; /* 将默认的列表符号去掉 */
+    padding:0; /* 将默认的内边距去掉 */
+    margin-top:10px; /* 将默认的外边距去掉 */
+    margin-left:18px; /* 将默认的外边距去掉 */
+    float: left; /* 往左浮动 */
+    display: block;
+}
+
+.LookMore{
+	background: silver;
+	margin-right: 20px;
+	margin-top: 10px;
+	//border: 1px solid silver;
+	float: right;
+	color: white;
+	text-decoration: none;
+}
+
+.comment-navigation .page-numbers{
+	display:inline-block;
+	padding:9px 16px;
+	color:#999;
+	background:#f1f1f1;
+}
+.comment-navigation .page-numbers:hover{
+	background:#e8e8e8;
+	color:#666;
+}
+
+
+
+#ArticleFooterLi {
+    list-style:none; /* 将默认的列表符号去掉 */
+    padding:0; /* 将默认的内边距去掉 */
+    margin-top:10px; /* 将默认的外边距去掉 */
+    margin-left:0px; /* 将默认的外边距去掉 */
+    float: left; /* 往左浮动 */
+    display: block;
+}
+
+.pagebar{
+	width: 630px;
+	height: 30px;
+	float: right;
+	margin-right: 10px;
+	border: 1px solid silver;
+	margin-top: 20px;
+}
+
+/*
+.recmendlist{
+	width: 630px;
+	height: 200px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:3px;
+}
+
+.recmendarticle{
+	width: 620px;
+	height: 90px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:3px;
+}
+
+.commonlist{
+	width: 630px;
+	height: 700px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:3px;
+}
+
+.commonarticle{
+	width: 620px;
+	height: 225px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:3px;
+}
+*/
+
+.SdBar{
+	width: 310px;
+	height: 1850px;
+	//border: 1px solid red;
+
+	margin-top: 3px;
+	margin-left:20px;
+	float: left;
+}
+
+.SdbarArticle {
+	width: 300px;
+	height: 400px;
+	border: 1px solid silver;
+	margin-top: 3px;
+	margin-left:5px;
+}
+
+.SdBarDy {
+	width: 300px;
+	height: 400px;
+	border: 1px solid silver;
+	margin-top: 15px;
+	margin-left:5px;
+}
+
+.SdBarIntrod {
+	width: 300px;
+	height: 400px;
+	border: 1px solid silver;
+	margin-top: 15px;
+	margin-left:5px;
+}
+
+.SdbarTags {
+	width: 300px;
+	height: 400px;
+	border: 1px solid silver;
+	margin-top: 15px;
+	margin-left:5px;
+}
+
+.ArticleModHead, .DyModHead, .IntrodModHead, .TagsModHead {
+	width: 300px;
+	height: 40px;
+	float: left;
+	margin-left: 0px;
+	//border: 1px solid silver;
+}
+
+.ModSglHead {
+	width: 148px;
+	height: 40px;
+	margin-left: 0px;
+	margin-top: 0px;
+	float: left;
+	border: 1px solid silver;
+}
+
+
+/*.SdBarModHead, .DyModHead, .IntrodModHead, */
+
+.RecommendArticleOver, .
+
+
+.bottom{
+	width: 1192px;
+	height: 170px;
+	border: 1px solid red;
+	margin-top: 20px;
+	margin-left:3px;	
+}
+
+
+/**************************************************************
+.ArticleSingle {
+	width: 1100px;
+	height:2280px;
+	border: 1px solid red;
+	margin-top: 3px;
+	margin-left:30px;
+}
+**************************************************************/
+
+
+

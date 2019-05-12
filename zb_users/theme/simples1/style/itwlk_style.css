@@ -5,6 +5,11 @@ body{
 	height:2290px;
 }
 
+a{
+	color: #000000;
+	text-decoration: none;
+}
+
 .page_all{
 	width: 1200px;
 	//height:2280px;
@@ -284,7 +289,15 @@ body{
 	margin-left: 0px;
 	margin-top: 0px;
 	float: left;
+	//background: #777777;
 	border: 1px solid silver;
+}
+
+.ModSglHead span{
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 20px;
+	//background: red;
 }
 
 /*.SdBarModHead, .DyModHead, .IntrodModHead, */

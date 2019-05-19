@@ -91,6 +91,24 @@ function simples_Category_Edit_Response(){
 		echo '<div><label for="meta_fjbt"><span style="font-weight: bold;">附加标题（留空即为不显示）:</span></label><br><input style="width:293px;" type="text" name="meta_fjbt" value="'.htmlspecialchars($cate->Metas->fjbt).'"/></div>';
 	}
 }
+
+/***************************************************************************************
+ * 修改开始
+***************************************************************************************/
+function hot_article($num){
+	global $zbp,$hot;
+	$hot .= '';
+	$array = $zbp->GetArticleList(array('*'),array(array('=','log_Status','0')),array('log_ViewNums'=>'DESC'),array($num),'');
+	foreach ($array as $article) {
+		$hot .= '<li><a href="'.$article->Url.'" title="'.$article->Title.'">'.$article->Title.'</a></li>';
+	}
+	$hot .= '';
+	return $hot;
+}
+/***************************************************************************************
+ * 修改开始
+***************************************************************************************/
+
 //卸载主题
 function UninstallPlugin_simples(){
 	global $zbp;

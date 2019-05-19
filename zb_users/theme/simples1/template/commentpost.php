@@ -1,9 +1,9 @@
 <div id="DivCommentPost">
 
 {if $user.ID>0}	
-	<li>用户：<input type="text" name="inpName" id="inpName" value="{$user.StaticName}" /><br/></li>
-	<li>邮箱：<input type="text" name="inpEmail" id="inpEmail" value="{$user.Email}" /><br/></li>
-	<li>主页：<input type="text" name="inpHomePage" id="inpHomePage" value="{$user.HomePage}" /><br/></li>	
+	<li>用户：<input type="text" name="inpName" id="inpName" value="" /><br/></li>
+	<li>邮箱：<input type="text" name="inpEmail" id="inpEmail" value="" /><br/></li>
+	<li>主页：<input type="text" name="inpHomePage" id="inpHomePage" value="" /><br/></li>
 {else}
 	<p><input type="text" name="inpName" id="inpName" class="text" value="{$user.StaticName}" size="28" tabindex="1" /> <label for="name">名称(*)</label></p>
 	<p><input type="text" name="inpEmail" id="inpEmail" class="text" value="{$user.Email}" size="28" tabindex="2" /> <label for="email">邮箱</label></p>

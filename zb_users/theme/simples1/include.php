@@ -97,7 +97,7 @@ function simples_Category_Edit_Response(){
 ***************************************************************************************/
 function hot_article($num){
 	global $zbp,$hot;
-	$hot .= '';
+	$hot = '';
 	$array = $zbp->GetArticleList(array('*'),array(array('=','log_Status','0')),array('log_ViewNums'=>'DESC'),array($num),'');
 	foreach ($array as $article) {
 		$hot .= '<li><a href="'.$article->Url.'" title="'.$article->Title.'">'.$article->Title.'</a></li>';

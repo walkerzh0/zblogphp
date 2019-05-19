@@ -3,11 +3,18 @@ body{
 	//border: 1px solid silver;
 	width: 1260px;
 	height:2290px;
+	background: #E5E5E5;
 }
 
 a{
 	color: #000000;
 	text-decoration: none;
+}
+
+.ListRemoveDot{
+	list-style:none;
+	margin-left: 6px;
+	margin-top: 6px;
 }
 
 .page_all{
@@ -16,6 +23,7 @@ a{
 	//border: 1px solid silver;
 	margin-top: 3px;
 	margin-left:30px;
+	background: #E5E5E5;
 }
 
 .top{
@@ -50,12 +58,19 @@ a{
 	background: #777777;
 }
 
+.navbars {
+	float: right;
+	color: white;
+}
+
 
 #menu { 
     font:12px verdana, arial, sans-serif; /* 设置文字大小和字体样式 */
-    width: 100%;
+    width: 70%;
 	margin-left: 5px;
+	//border: 1px solid red;
 }
+
 #menu, #menu li {
     list-style:none; /* 将默认的列表符号去掉 */
     padding:0; /* 将默认的内边距去掉 */
@@ -70,6 +85,47 @@ a{
 #menu, #menu li a{ 
 	color: white;
 	text-decoration: none;
+}
+
+#menubar { 
+    font:12px verdana, arial, sans-serif; /* 设置文字大小和字体样式 */
+    width: 20%;
+	margin-left: 5px;
+	//border: 1px solid red;
+}
+
+#menubar, #menubar li{
+    list-style:none; /* 将默认的列表符号去掉 */
+    padding:0; /* 将默认的内边距去掉 */
+    margin-top:38px; /* 将默认的外边距去掉 */
+	margin-left:20px;
+    float: left; /* 往左浮动 */
+    display: block;
+	font-size: 15px;
+	color: white;	
+}
+
+.pullMenuDiv {
+	width: 50px;
+	//height: 110px;
+	border: 1px solid red;
+	margin-top: 0px;
+	margin-right:3px;
+	display=none;
+}
+
+#pullMenu {
+	display=none;
+	height: 110px;
+	background: green;
+	margin-top:38px; /* 将默认的外边距去掉 */
+	margin-left: 50px;
+}
+
+#pullMenu li{
+	margin-top: 10px;
+	margin-left: 0px;
+	display=none;
 }
 
 .IndexMiddle{
@@ -113,6 +169,7 @@ a{
 	border: 1px solid silver;
 	margin-top: 15px;
 	margin-left:8px;
+	background: white;
 }
 
 .StateDiv {
@@ -249,6 +306,7 @@ a{
 	border: 1px solid silver;
 	margin-top: 3px;
 	margin-left:5px;
+	background: white;
 }
 
 .SdBarDy {
@@ -257,6 +315,7 @@ a{
 	border: 1px solid silver;
 	margin-top: 15px;
 	margin-left:5px;
+	background: white;
 }
 
 .SdBarIntrod {
@@ -265,6 +324,7 @@ a{
 	border: 1px solid silver;
 	margin-top: 15px;
 	margin-left:5px;
+	background: white;
 }
 
 .SdbarTags {
@@ -273,6 +333,7 @@ a{
 	border: 1px solid silver;
 	margin-top: 15px;
 	margin-left:5px;
+	background: white;
 }
 
 .ArticleModHead, .DyModHead, .IntrodModHead, .TagsModHead {
@@ -289,8 +350,8 @@ a{
 	margin-left: 0px;
 	margin-top: 0px;
 	float: left;
-	//background: #777777;
-	border: 1px solid silver;
+	background: #777777;
+	//border: 1px solid silver;
 }
 
 .ModSglHead span{

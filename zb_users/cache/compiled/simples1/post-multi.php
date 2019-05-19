@@ -36,8 +36,10 @@ function mOut(obj)
 		</div>
 		<div class="ArticleFooter">
 
-				<div id="ArticleFooterLi"><i class="fa fa-calendar" margin-left="0px" ></i><?php  echo $article->Time('Y-m-d');  ?></div>
+				<div id="ArticleFooterLi"><i margin-left="0px" ></i><?php  echo $article->Time('Y-m-d');  ?></div>
 				<li><i class="fa fa-eye"></i><?php  echo $article->ViewNums;  ?>次浏览</li>
+				<!--fa-comment-o  :http://www.fontawesome.com.cn/faicons/-->
+				<li><i class="fa fa-user"></i><?php  echo $article->Author->Name;  ?></li>
 				<li><i class="fa fa-folder-o"></i><a href="<?php  echo $article->Category->Url;  ?>" rel="category tag"><?php  echo $article->Category->Name;  ?></a></li>
 				<div><a href="<?php  echo $article->Url;  ?>" class="LookMore" onmouseover="mOver(this)" onmouseout="mOut(this)">阅读全文</a></div>
 

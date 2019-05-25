@@ -100,7 +100,7 @@ function hot_article($num){
 	$hot = '';
 	$array = $zbp->GetArticleList(array('*'),array(array('=','log_Status','0')),array('log_ViewNums'=>'DESC'),array($num),'');
 	foreach ($array as $article) {
-		$hot .= '<li><a href="'.$article->Url.'" title="'.$article->Title.'">'.$article->Title.'</a></li>';
+		$hot .= '<li><a href="'.$article->Url.'" title="'.$article->Title.'">'.substr($article->Title, 0, 20).'</a></li>';
 	}
 	$hot .= '';
 	return $hot;

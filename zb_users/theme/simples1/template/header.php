@@ -33,25 +33,17 @@
 		
 		<div class="navbar">
 			<ul id="menu">
-				<li><a href="http://localhost/zblogphp/">首页</a></li>
-				<li><a href="http://localhost/zblogphp/?id=2">留言本</a></li>
-				<li><a href="http://localhost/zblogphp/?apost_free">投稿</a></li>
-				<li><a href="http://localhost/zblogphp/?Login">登录</a></li>
-				<li><a href="http://localhost/zblogphp/?Register">注册</a></li>
-				<li><a href="http://localhost/zblogphp/zb_system/admin/index.php?act=admin">后台</a></li>
+				<li><a href="{$host}">首页</a></li>
+				<li><a href="{$host}?id=2">留言本</a></li>
+				<li><a href="{$host}?apost_free">投稿</a></li>
+				<li><a href="{$host}?Login">登录</a></li>
+				<li><a href="{$host}?Register">注册</a></li>
+				<li><a href="{$host}zb_system/admin/index.php?act=admin">后台</a></li>
 			</ul>
 			<ul id="menubar">
 				<li><i class="fa fa-search"></i></li>
 				<li><i class="fa fa-bars" onmouseover="showsub(this)" onmouseout="hidesub(this)"></i></li>
-				<!--
-				<div id="pullMenu">
-					<ul> 
-						<li><a href="#">Resource1</a></li> 
-						<li><a href="#">Resource2</a></li> 
-						<li><a href="#">Resource3</a></li> 
-					</ul>					
-				<div>
-				-->
+
 			</ul>
 		</div>	
 	</div>

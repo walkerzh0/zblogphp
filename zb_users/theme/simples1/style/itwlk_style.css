@@ -190,7 +190,7 @@ a{
 	height: 140px;
 	float: left;
 	margin-left: 5px;
-	//border: 1px solid silver;
+	border: 1px solid silver;
 }
 
 .ArticleDetailDiv {
@@ -351,6 +351,7 @@ a{
 	margin-top: 0px;
 	float: left;
 	background: #777777;
+	color: white;
 	//border: 1px solid silver;
 }
 
@@ -391,6 +392,7 @@ a{
 	margin-top: 3px;
 	margin-left:3px;
 	float: left;
+	background: white;
 }
 
 .ArticleTitle{

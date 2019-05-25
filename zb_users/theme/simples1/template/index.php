@@ -7,11 +7,10 @@
 	<div class="IndexMiddle">
 	
 		<div class="article_list">
-		
 			<div class="ad_top">
-				<a href="{$article.Url}"><img src="{$zbp->Config('simples')->thumbnail}" alt="{$article.Title}" class="wp-post-image" width="830px" height="280px"  /></a>
+				<img src="{$zbp->Config('simples1')->thumbnail}" class="wp-post-image" width="830px" height="280px"  /></a>
 			</div>
-			
+
 			<!--文章列表-->
 			{foreach $articles as $article}
 				{if $article.IsTop}
